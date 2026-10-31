@@ -117,6 +117,50 @@
       background-image: radial-gradient(rgba(0, 245, 212, 0.1) 1px, transparent 1px);
       background-size: 32px 32px;
     }
+
+    /* ===== Printable Resume (แสดงเฉพาะตอนพิมพ์/บันทึกเป็น PDF) ===== */
+    #resume-print { display: none; }
+
+    @media print {
+      @page { size: A4 portrait; margin: 12mm 14mm; }
+
+      body { background: #fff !important; }
+
+      /* ซ่อนทุกอย่างที่ไม่ใช่เรซูเม่ */
+      header, #certModal, #mobileMenu, body > div.fixed { display: none !important; }
+      main { padding: 0 !important; margin: 0 !important; max-width: none !important; }
+      main > section:not(#resume-print) { display: none !important; }
+
+      body #resume-print {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        color: #111827;
+        font-family: "Sarabun", "Plus Jakarta Sans", sans-serif;
+        font-size: 10.5pt;
+        line-height: 1.42;
+      }
+      body #resume-print .pr-head {
+        display: flex; justify-content: space-between; align-items: flex-end; gap: 14px;
+        border-bottom: 3px solid #0891b2; padding-bottom: 6px; margin-bottom: 10px;
+      }
+      body #resume-print .pr-name { font-size: 19pt; font-weight: 800; margin: 0; line-height: 1.15; color: #0f172a; }
+      body #resume-print .pr-role { font-size: 11pt; font-weight: 600; color: #0e7490; margin: 2px 0 0; }
+      body #resume-print .pr-contact { text-align: right; font-size: 9.5pt; color: #334155; line-height: 1.5; flex-shrink: 0; }
+      body #resume-print .pr-sec { margin-bottom: 10px; }
+      body #resume-print .pr-h {
+        font-size: 10.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em;
+        color: #0e7490; border-bottom: 1px solid #cbd5e1; padding-bottom: 2px; margin: 0 0 6px;
+      }
+      body #resume-print .pr-cols { column-count: 2; column-gap: 20px; }
+      body #resume-print .pr-item { break-inside: avoid; margin-bottom: 5px; }
+      body #resume-print .pr-item h4 { font-size: 10.5pt; font-weight: 700; margin: 0; color: #0f172a; }
+      body #resume-print .pr-item p { font-size: 9.8pt; color: #374151; margin: 1px 0 0; }
+      body #resume-print .pr-meta { font-size: 9.2pt; color: #64748b; font-weight: 400; }
+      body #resume-print ul.pr-list { margin: 2px 0 0; padding-left: 15px; }
+      body #resume-print ul.pr-list li { font-size: 9.8pt; color: #374151; margin-bottom: 1px; }
+      body #resume-print .pr-docs { font-size: 9.8pt; color: #374151; margin: 0; }
+    }
   </style>
 </head>
 <body class="selection:bg-cyan-500 selection:text-black font-sans antialiased">
@@ -853,8 +897,12 @@
               </div>
             </div>
 
-            <button onclick="window.print()" class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-600 text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
-              <i class="fa-solid fa-print"></i> <span data-th="พิมพ์หน้านี้เป็น Resume (PDF)" data-en="Print this page as Resume (PDF)">พิมพ์หน้านี้เป็น Resume (PDF)</span>
+            <a href="assets/Resume_Rungsikorn_Singthaisong.pdf" target="_blank" rel="noopener" download class="w-full py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-600 text-black font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+              <i class="fa-solid fa-file-pdf"></i> <span data-th="ดาวน์โหลด Resume (PDF)" data-en="Download Resume (PDF)">ดาวน์โหลด Resume (PDF)</span>
+            </a>
+            <p class="text-[10px] text-slate-500 leading-relaxed text-center" data-th="ไฟล์ PDF 1 หน้า A4 · กดปุ่มขวาล่างในหน้า PDF เพื่อบันทึกลงเครื่อง หรือกด &quot;พิมพ์หน้านี้เป็น PDF&quot; ด้านล่างเพื่อพิมพ์จากเว็บไซต์" data-en="1-page A4 PDF · Use the download button in the PDF viewer, or print from the website with the button below">ไฟล์ PDF 1 หน้า A4 · กดปุ่มขวาล่างในหน้า PDF เพื่อบันทึกลงเครื่อง หรือกด "พิมพ์หน้านี้เป็น PDF" ด้านล่างเพื่อพิมพ์จากเว็บไซต์</p>
+            <button onclick="window.print()" class="w-full py-2 rounded-xl bg-slate-900 text-slate-300 font-semibold text-xs border border-slate-700 hover:border-slate-500 hover:bg-slate-800 transition-opacity flex items-center justify-center gap-2">
+              <i class="fa-solid fa-print"></i> <span data-th="พิมพ์หน้านี้เป็น PDF จากเว็บ" data-en="Print from website as PDF">พิมพ์หน้านี้เป็น PDF จากเว็บ</span>
             </button>
           </div>
         </div>
@@ -869,6 +917,114 @@
         </div>
       </div>
     </section>
+
+  <!-- ============ PRINTABLE RESUME (แสดงเฉพาะตอนพิมพ์ → บันทึกเป็น PDF) ============ -->
+  <section id="resume-print" aria-hidden="true">
+
+    <!-- Header -->
+    <div class="pr-head">
+      <div>
+        <h1 class="pr-name" data-th="รังษิกร สิงห์ไธสง (Mean)" data-en="Rungsikorn Singthaisong (Mean)">รังษิกร สิงห์ไธสง (Mean)</h1>
+        <p class="pr-role" data-th="วิศวกรอุตสาหการ × ผู้เชี่ยวชาญ Generative AI" data-en="Industrial Engineer × Generative AI Specialist">วิศวกรอุตสาหการ × ผู้เชี่ยวชาญ Generative AI</p>
+      </div>
+      <div class="pr-contact">
+        <div>092-4925992 · Mean_@outlook.com</div>
+        <div data-th="ขอนแก่น, ประเทศไทย · พร้อมทำงาน" data-en="Khon Kaen, Thailand · Available for work">ขอนแก่น, ประเทศไทย · พร้อมทำงาน</div>
+        <div>rungsikorn-mean.github.io/my-profile</div>
+      </div>
+    </div>
+
+    <!-- โปรไฟล์ -->
+    <div class="pr-sec">
+      <h2 class="pr-h" data-th="โปรไฟล์" data-en="Profile">โปรไฟล์</h2>
+      <p class="pr-docs" data-th="&lt;strong&gt;วศ.บ. วิศวกรรมอุตสาหการ มหาวิทยาลัยบูรพา&lt;/strong&gt; — ผสานประสบการณ์จริงด้าน Continuous Improvement / Kaizen (รางวัลอันดับ 3 จาก Essilor) และการสอบเทียบเครื่องมือวัด เข้ากับ Generative AI สมัยใหม่: ออกแบบ Node Workflow บน ComfyUI สร้าง Text, Image, Video, Music ประยุกต์ AutoGPT และ VS Code เพื่อ Automate งานจริง" data-en="&lt;strong&gt;B.Eng. Industrial Engineering, Burapha University&lt;/strong&gt; — combining hands-on Continuous Improvement / Kaizen experience (3rd place award, Essilor) and metrology with modern Generative AI: designing ComfyUI node workflows for Text, Image, Video and Music, and applying AutoGPT + VS Code to automate real work">
+        <strong>วศ.บ. วิศวกรรมอุตสาหการ มหาวิทยาลัยบูรพา</strong> — ผสานประสบการณ์จริงด้าน Continuous Improvement / Kaizen (รางวัลอันดับ 3 จาก Essilor) และการสอบเทียบเครื่องมือวัด เข้ากับ Generative AI สมัยใหม่: ออกแบบ Node Workflow บน ComfyUI สร้าง Text, Image, Video, Music ประยุกต์ AutoGPT และ VS Code เพื่อ Automate งานจริง
+      </p>
+    </div>
+
+    <!-- ทักษะ -->
+    <div class="pr-sec">
+      <h2 class="pr-h" data-th="ทักษะหลัก" data-en="Key Skills">ทักษะหลัก</h2>
+      <div class="pr-cols">
+        <div class="pr-item">
+          <h4>Generative AI &amp; Agents</h4>
+          <p data-th="ComfyUI (Text / Image / Video / Music), AutoGPT, Prompt Engineering, VS Code &amp; Scripting, AI Automation" data-en="ComfyUI (Text / Image / Video / Music), AutoGPT, Prompt Engineering, VS Code &amp; Scripting, AI Automation">ComfyUI (Text / Image / Video / Music), AutoGPT, Prompt Engineering, VS Code &amp; Scripting, AI Automation</p>
+        </div>
+        <div class="pr-item">
+          <h4 data-th="วิศวกรรมอุตสาหการ &amp; CI" data-en="Industrial Engineering &amp; CI">วิศวกรรมอุตสาหการ &amp; CI</h4>
+          <p data-th="Lean / Continuous Improvement, Kaizen / Poka-Yoke, 7 QC Tools, Statistical Analysis, Line Balancing, Metrology / Calibration" data-en="Lean / Continuous Improvement, Kaizen / Poka-Yoke, 7 QC Tools, Statistical Analysis, Line Balancing, Metrology / Calibration">Lean / Continuous Improvement, Kaizen / Poka-Yoke, 7 QC Tools, Statistical Analysis, Line Balancing, Metrology / Calibration</p>
+        </div>
+        <div class="pr-item">
+          <h4 data-th="ซอฟต์แวร์วิศวกรรม" data-en="Engineering Software">ซอฟต์แวร์วิศวกรรม</h4>
+          <p data-th="AutoCAD, SolidWorks, FeatureCAM, Basic PLC, Adobe Photoshop, Microsoft Excel (สูตร &amp; สถิติ)" data-en="AutoCAD, SolidWorks, FeatureCAM, Basic PLC, Adobe Photoshop, Microsoft Excel (formulas &amp; statistics)">AutoCAD, SolidWorks, FeatureCAM, Basic PLC, Adobe Photoshop, Microsoft Excel (สูตร &amp; สถิติ)</p>
+        </div>
+        <div class="pr-item">
+          <h4 data-th="ภาษา" data-en="Languages">ภาษา</h4>
+          <p data-th="ภาษาไทย (ภาษาแม่), ภาษาอังกฤษ (อ่าน/เขียน เอกสารเทคนิค)" data-en="Thai (native), English (technical reading &amp; writing)">ภาษาไทย (ภาษาแม่), ภาษาอังกฤษ (อ่าน/เขียน เอกสารเทคนิค)</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ประสบการณ์ -->
+    <div class="pr-sec">
+      <h2 class="pr-h" data-th="ประสบการณ์ทำงาน" data-en="Work Experience">ประสบการณ์ทำงาน</h2>
+
+      <div class="pr-item">
+        <h4 data-th="ผู้รับเหมาดิน งานขุด ขน ถม" data-en="Earthwork Contractor — Excavation, Hauling &amp; Fill">ผู้รับเหมาดิน งานขุด ขน ถม</h4>
+        <p class="pr-meta" data-th="บริษัท สามเหลี่ยม จำกัด · มหาสารคาม · ส.ค. 2568 – ปัจจุบัน" data-en="Samriam Co., Ltd. · Mahasarakham · Aug 2025 – Present">บริษัท สามเหลี่ยม จำกัด · มหาสารคาม · ส.ค. 2568 – ปัจจุบัน</p>
+        <ul class="pr-list">
+          <li data-th="คิดต้นทุนรับเหมาและเสนอราคา, วัดค่าคอนทัวร์ วัดปริมาณดิน ทำแบบส่งงาน" data-en="Cost estimation and bid preparation; surveying contours, measuring earth volumes, preparing as-built drawings">คิดต้นทุนรับเหมาและเสนอราคา, วัดค่าคอนทัวร์ วัดปริมาณดิน ทำแบบส่งงาน</li>
+        </ul>
+      </div>
+
+      <div class="pr-item">
+        <h4 data-th="เจ้าหน้าที่ห้องปฏิบัติการ ระดับ 1 (Mechanical Calibration)" data-en="Laboratory Officer Level 1 (Mechanical Calibration)">เจ้าหน้าที่ห้องปฏิบัติการ ระดับ 1 (Mechanical Calibration)</h4>
+        <p class="pr-meta" data-th="บริษัท บูรพา เมโทรโลยี ซิสเต็ม จำกัด · ชลบุรี · ธ.ค. 2562 – มิ.ย. 2563" data-en="Burapha Metrology System Co., Ltd. · Chonburi · Dec 2019 – Jun 2020">บริษัท บูรพา เมโทรโลยี ซิสเต็ม จำกัด · ชลบุรี · ธ.ค. 2562 – มิ.ย. 2563</p>
+        <ul class="pr-list">
+          <li data-th="สอบเทียบเครื่องมือวัดทางกล (Mechanical) ตามมาตรฐานการสอบเทียบ" data-en="Calibrated mechanical measuring instruments in accordance with calibration standards">สอบเทียบเครื่องมือวัดทางกล (Mechanical) ตามมาตรฐานการสอบเทียบ</li>
+          <li data-th="บริการลูกค้า: รับ-ส่งงานสอบเทียบ จัดทำรายงานผลการสอบเทียบให้ลูกค้าอุตสาหกรรม" data-en="Customer service: instrument intake/delivery and issuing calibration reports to industrial clients">บริการลูกค้า: รับ-ส่งงานสอบเทียบ จัดทำรายงานผลการสอบเทียบให้ลูกค้าอุตสาหกรรม</li>
+        </ul>
+      </div>
+
+      <div class="pr-item">
+        <h4 data-th="นักศึกษาฝึกงาน ฝ่าย Continuous Improvement (CI)" data-en="Intern — Continuous Improvement (CI)">นักศึกษาฝึกงาน ฝ่าย Continuous Improvement (CI)</h4>
+        <p class="pr-meta" data-th="บริษัท เอสซีลอร์ ออพติคอล แลบอราทอรี (ประเทศไทย) จำกัด · ชลบุรี · พ.ค. – ก.ค. 2561" data-en="Essilor Optical Laboratory (Thailand) Co., Ltd. · Chonburi · May – Jul 2018">บริษัท เอสซีลอร์ ออพติคอล แลบอราทอรี (ประเทศไทย) จำกัด · ชลบุรี · พ.ค. – ก.ค. 2561</p>
+        <ul class="pr-list">
+          <li data-th="จัดทำ Line Balancing เพื่อลด Cycle Time ในสายการผลิตเลนส์" data-en="Implemented Line Balancing to reduce cycle time on a lens production line">จัดทำ Line Balancing เพื่อลด Cycle Time ในสายการผลิตเลนส์</li>
+          <li data-th="ใช้ 7 QC Tools และสถิติวิศวกรรมวิเคราะห์สาเหตุของ Defect" data-en="Applied 7 QC Tools and engineering statistics to root-cause defects">ใช้ 7 QC Tools และสถิติวิศวกรรมวิเคราะห์สาเหตุของ Defect</li>
+          <li data-th="จัดกิจกรรม Kaizen 8G เพื่อสร้างวัฒนธรรม Continuous Improvement" data-en="Ran Kaizen 8G activities to build a Continuous Improvement culture">จัดกิจกรรม Kaizen 8G เพื่อสร้างวัฒนธรรม Continuous Improvement</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- รางวัล -->
+    <div class="pr-sec">
+      <h2 class="pr-h" data-th="รางวัลเด่น" data-en="Award">รางวัลเด่น</h2>
+      <div class="pr-item">
+        <h4 data-th="รางวัลอันดับ 3 — Kaizen 8G Best Suggestion Award" data-en="3rd Place — Kaizen 8G Best Suggestion Award">รางวัลอันดับ 3 — Kaizen 8G Best Suggestion Award</h4>
+        <p class="pr-meta" data-th="Essilor Optical Laboratory (Thailand) · 29 พ.ย. 2561" data-en="Essilor Optical Laboratory (Thailand) · 29 Nov 2018">Essilor Optical Laboratory (Thailand) · 29 พ.ย. 2561</p>
+        <p data-th="นวัตกรรม &quot;ป้องกันการเติมซองผิด&quot; ด้วยหลักการ Poka-Yoke / Kaizen ลดของเสียและเพิ่มความถูกต้องในสายการผลิต" data-en="&quot;Preventing wrong-envelope packing&quot; innovation using Poka-Yoke / Kaizen — reduced scrap and improved accuracy on the production line">นวัตกรรม "ป้องกันการเติมซองผิด" ด้วยหลักการ Poka-Yoke / Kaizen ลดของเสียและเพิ่มความถูกต้องในสายการผลิต</p>
+      </div>
+    </div>
+
+    <!-- การศึกษา -->
+    <div class="pr-sec">
+      <h2 class="pr-h" data-th="การศึกษา" data-en="Education">การศึกษา</h2>
+      <div class="pr-item">
+        <h4 data-th="วิศวกรรมศาสตรบัณฑิต (วศ.บ.) สาขาวิศวกรรมอุตสาหการ" data-en="B.Eng. in Industrial Engineering">วิศวกรรมศาสตรบัณฑิต (วศ.บ.) สาขาวิศวกรรมอุตสาหการ</h4>
+        <p class="pr-meta" data-th="มหาวิทยาลัยบูรพา · 2558 – 2562 · 151 หน่วยกิต" data-en="Burapha University · 2015 – 2019 · 151 credits">มหาวิทยาลัยบูรพา · 2558 – 2562 · 151 หน่วยกิต</p>
+        <p data-th="วิชาเด่น: การวิจัยการดำเนินงาน (A), การจัดการทางวิศวกรรม (A), กรรมวิธีการผลิตและเขียนแบบการผลิต (A), สถิติวิศวกรรม (B+), การเขียนโปรแกรมสำหรับวิศวกรรม (B)" data-en="Highlight grades: Operation Research (A), Engineering Management (A), Manufacturing Processes &amp; Process Planning (A), Engineering Statistics (B+), Engineering Programming (B)">วิชาเด่น: การวิจัยการดำเนินงาน (A), การจัดการทางวิศวกรรม (A), กรรมวิธีการผลิตและเขียนแบบการผลิต (A), สถิติวิศวกรรม (B+), การเขียนโปรแกรมสำหรับวิศวกรรม (B)</p>
+      </div>
+    </div>
+
+    <!-- เอกสารรับรอง -->
+    <div class="pr-sec">
+      <h2 class="pr-h" data-th="เอกสารรับรอง (ตรวจได้ที่ลิงก์ด้านบน)" data-en="Credentials (verifiable via the link above)">เอกสารรับรอง (ตรวจได้ที่ลิงก์ด้านบน)</h2>
+      <p class="pr-docs" data-th="เกียรติบัตร Kaizen 8G (อันดับ 3) · ใบรับรองการผ่านงาน บริษัท บูรพา เมโทรโลยี ซิสเต็ม · หนังสือรับรองการฝึกงาน CI บริษัท เอสซีลอร์ · ปริญญาบัตร มหาวิทยาลัยบูรพา" data-en="Kaizen 8G Certificate (3rd place) · Employment Certificate, Burapha Metrology System · CI Internship Certificate, Essilor · Degree Certificate, Burapha University">เกียรติบัตร Kaizen 8G (อันดับ 3) · ใบรับรองการผ่านงาน บริษัท บูรพา เมโทรโลยี ซิสเต็ม · หนังสือรับรองการฝึกงาน CI บริษัท เอสซีลอร์ · ปริญญาบัตร มหาวิทยาลัยบูรพา</p>
+    </div>
+
+  </section>
+  <!-- ============ END PRINTABLE RESUME ============ -->
 
   </main>
 
