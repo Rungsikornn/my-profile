@@ -474,7 +474,7 @@
             <i class="fa-solid fa-music mr-1"></i> Music
           </button>
           <button onclick="switchTab('text')" id="tab-text" class="tab-btn px-4 py-2 rounded-lg text-xs font-semibold transition-all text-slate-400 hover:text-white">
-            <i class="fa-solid fa-font mr-1"></i> Text/Agent
+            <i class="fa-solid fa-clapperboard mr-1"></i> Clip Studio
           </button>
         </div>
       </div>
@@ -581,33 +581,41 @@
           </div>
         </div>
 
-        <!-- TEXT / AUTOGPT TAB -->
+        <!-- CLIP STUDIO TAB -->
         <div id="content-text" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div class="lg:col-span-6 space-y-4">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded bg-green-500/10 text-green-300 text-xs font-mono">
-              <i class="fa-solid fa-robot"></i> AutoGPT & Autonomous Loop
+              <i class="fa-solid fa-clapperboard"></i> Clip Studio & Production Control
             </div>
-            <h3 class="text-2xl font-bold text-white">AutoGPT & Workflow Orchestration</h3>
-            <p class="text-slate-300 text-sm leading-relaxed" data-th="การนำ AutoGPT มาประยุกต์ร่วมกับ VS Code เพื่อสั่งการให้ AI ทำงานอัตโนมัติเป็นขั้นตอน เช่น การค้นหาข้อมูล การเขียนแบบร่างเอกสารวิศวกรรม การตรวจสอบโค้ด และการจัดเตรียมข้อมูลสำหรับ ComfyUI" data-en="Applying AutoGPT together with VS Code to chain autonomous AI tasks — research, drafting engineering documents, code review, and preparing data for ComfyUI pipelines">
-              การนำ AutoGPT มาประยุกต์ร่วมกับ VS Code เพื่อสั่งการให้ AI ทำงานอัตโนมัติเป็นขั้นตอน เช่น การค้นหาข้อมูล การเขียนแบบร่างเอกสารวิศวกรรม การตรวจสอบโค้ด และการจัดเตรียมข้อมูลสำหรับ ComfyUI
+            <h3 class="text-2xl font-bold text-white">Clip Studio — ศูนย์ควบคุมการผลิตคลิป AI</h3>
+            <p class="text-slate-300 text-sm leading-relaxed" data-th="เครื่องมือที่ผมพัฒนาเองบน Obsidian (plugin ส่วนตัว) — ศูนย์ควบคุมการผลิตคลิป AI ครบวงจร: จัดการ episode และช็อต, สั่งรัน image / voice / video เป็น batch, บังคับกฎคุณภาพด้วย QC Gate ก่อนเข้าขั้นถัดไป และสร้างรายงาน QC อัตโนมัติพร้อมคำสั่งแก้เฉพาะช็อตที่พลาด" data-en="My own Obsidian plugin — a full AI clip production control center: episode &amp; shot management, batch image/voice/video runs, enforced quality gates between stages, and automatic QC reports with per-shot fix commands">
+              เครื่องมือที่ผมพัฒนาเองบน Obsidian (plugin ส่วนตัว) — ศูนย์ควบคุมการผลิตคลิป AI ครบวงจร: จัดการ episode และช็อต, สั่งรัน image / voice / video เป็น batch, บังคับกฎคุณภาพด้วย QC Gate ก่อนเข้าขั้นถัดไป และสร้างรายงาน QC อัตโนมัติพร้อมคำสั่งแก้เฉพาะช็อตที่พลาด
             </p>
             <div class="bg-black/40 rounded-xl p-4 font-mono text-xs border border-white/5 space-y-2">
-              <div class="text-slate-500">// Agent Goal Execution</div>
-              <div class="text-green-300"><span class="text-purple-400">Agent Role:</span> Process Optimization Researcher</div>
-              <div class="text-green-300"><span class="text-purple-400">Actions:</span> Web Scraping &rarr; Synthesis &rarr; Auto Code Execution</div>
-              <div class="text-green-300"><span class="text-purple-400">Environment:</span> VS Code, Terminal & Python Scripting</div>
+              <div class="text-slate-500">// Clip Studio Production Flow</div>
+              <div class="text-green-300"><span class="text-purple-400">Plan:</span> Episode manifest &rarr; shot list &rarr; prompt_check (gate G1)</div>
+              <div class="text-green-300"><span class="text-purple-400">Run:</span> clip_studio.ps1 -Task full &rarr; image / voice / video batch</div>
+              <div class="text-green-300"><span class="text-purple-400">QC:</span> qc_report.py &rarr; duration band check &rarr; contact sheet</div>
+              <div class="text-green-300"><span class="text-purple-400">Report:</span> QC_REPORT_*.md &rarr; fix list &rarr; rerun only failed shots</div>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2.5 py-1 bg-slate-800 text-green-300 text-[11px] font-mono rounded">Obsidian Plugin</span>
+              <span class="px-2.5 py-1 bg-slate-800 text-cyan-300 text-[11px] font-mono rounded">Batch Pipeline</span>
+              <span class="px-2.5 py-1 bg-slate-800 text-purple-300 text-[11px] font-mono rounded">QC Gate</span>
+              <span class="px-2.5 py-1 bg-slate-800 text-amber-300 text-[11px] font-mono rounded">Auto Report</span>
             </div>
           </div>
           <div class="lg:col-span-6">
-            <div class="relative rounded-xl overflow-hidden border border-green-500/30 bg-slate-900 aspect-video flex flex-col justify-center items-center p-6 text-center">
-              <div class="w-16 h-16 rounded-full bg-green-500/20 text-green-400 flex items-center justify-center text-2xl mb-3">
-                <i class="fa-solid fa-terminal"></i>
+            <div class="relative rounded-xl overflow-hidden border border-green-500/30 bg-slate-900 p-4 flex flex-col gap-3">
+              <div class="rounded-xl overflow-hidden border border-slate-700/60 shadow-lg">
+                <img src="assets/pipeline-contact-sheet.jpg" alt="Clip Studio QC contact sheet — image and video takes from batch run" class="w-full h-auto object-cover rounded-xl">
               </div>
-              <h4 class="text-white font-semibold text-base mb-1">Autonomous Task Delegation</h4>
-              <p class="text-slate-400 text-xs max-w-sm">ลดเวลาทำงานซ้ำซ้อนด้วย AI Agent ที่สามารถคิด วางแผน และลงมือทำได้ด้วยตนเอง</p>
-              <div class="mt-4 flex gap-2">
-                <span class="px-2 py-1 bg-slate-800 text-green-300 text-[10px] font-mono rounded">Auto Tasks</span>
-                <span class="px-2 py-1 bg-slate-800 text-green-300 text-[10px] font-mono rounded">VS Code Ready</span>
+              <div class="flex items-center justify-between px-1 gap-2 flex-wrap">
+                <span class="text-[11px] font-mono text-slate-400">qc_contact_sheet.jpg · ch_a01 batch run</span>
+                <div class="flex gap-2">
+                  <span class="px-2 py-0.5 bg-slate-800 text-green-300 text-[10px] font-mono rounded">Image + Video takes</span>
+                  <span class="px-2 py-0.5 bg-slate-800 text-cyan-300 text-[10px] font-mono rounded">Auto-generated</span>
+                </div>
               </div>
             </div>
           </div>
