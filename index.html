@@ -588,21 +588,43 @@
               <i class="fa-solid fa-clapperboard"></i> Clip Studio & Production Control
             </div>
             <h3 class="text-2xl font-bold text-white">Clip Studio — ศูนย์ควบคุมการผลิตคลิป AI</h3>
-            <p class="text-slate-300 text-sm leading-relaxed" data-th="เครื่องมือที่ผมพัฒนาเองบน Obsidian (plugin ส่วนตัว) — ศูนย์ควบคุมการผลิตคลิป AI ครบวงจร: จัดการ episode และช็อต, สั่งรัน image / voice / video เป็น batch, บังคับกฎคุณภาพด้วย QC Gate ก่อนเข้าขั้นถัดไป และสร้างรายงาน QC อัตโนมัติพร้อมคำสั่งแก้เฉพาะช็อตที่พลาด" data-en="My own Obsidian plugin — a full AI clip production control center: episode &amp; shot management, batch image/voice/video runs, enforced quality gates between stages, and automatic QC reports with per-shot fix commands">
-              เครื่องมือที่ผมพัฒนาเองบน Obsidian (plugin ส่วนตัว) — ศูนย์ควบคุมการผลิตคลิป AI ครบวงจร: จัดการ episode และช็อต, สั่งรัน image / voice / video เป็น batch, บังคับกฎคุณภาพด้วย QC Gate ก่อนเข้าขั้นถัดไป และสร้างรายงาน QC อัตโนมัติพร้อมคำสั่งแก้เฉพาะช็อตที่พลาด
+            <p class="text-slate-300 text-sm leading-relaxed" data-th="เครื่องมือที่ผมพัฒนาเองทั้งหมดบน Obsidian (plugin ส่วนตัว เปิดจากไอคอน 🎬 ในแอป — ไม่มีหน้าต่างดำ) — ศูนย์ควบคุมการผลิตคลิป AI ครบวงจร 1 ฟอร์มจบตั้งแต่คิดเรื่องจนส่งเข้า Premiere ใช้ผลิตจริงทั้งชั้น Short (15 ช็อต) และ Long (60+ ช็อต) ครอบคลุม 5 ขั้น:" data-en="My own Obsidian plugin (private build, launched from the 🎬 icon — no black console windows) — a full AI clip production control center: one form from ideation to Premiere export, used to produce real clips from Short (15 shots) to Long (60+ shots), covering 5 stages:">
+              เครื่องมือที่ผมพัฒนาเองทั้งหมดบน Obsidian (plugin ส่วนตัว เปิดจากไอคอน 🎬 ในแอป — ไม่มีหน้าต่างดำ) — ศูนย์ควบคุมการผลิตคลิป AI ครบวงจร 1 ฟอร์มจบตั้งแต่คิดเรื่องจนส่งเข้า Premiere ใช้ผลิตจริงทั้งชั้น Short (15 ช็อต) และ Long (60+ ช็อต) ครอบคลุม 5 ขั้น:
             </p>
+
+            <ol class="space-y-2.5 text-sm text-slate-300 list-decimal list-inside marker:text-green-400 marker:font-mono marker:text-xs">
+              <li data-th="&lt;strong class=&quot;text-white&quot;&gt;คิดเรื่อง&lt;/strong&gt; — สร้าง 3 ไอเดียต่อโมเดล (OpenCode Go · qwen3.7-plus) ให้คะแนน ⭐ ความสนใจ · 🎓 วัยเรียน · 💼 วัยทำงาน แล้วเรียงลำดับให้เลือก" data-en="&lt;strong class=&quot;text-white&quot;&gt;Ideate&lt;/strong&gt; — 3 ideas per model (OpenCode Go · qwen3.7-plus), scored ⭐ interest · 🎓 students · 💼 professionals, ranked for picking">
+                <strong class="text-white">คิดเรื่อง</strong> — สร้าง 3 ไอเดียต่อโมเดล (OpenCode Go · qwen3.7-plus) ให้คะแนน ⭐ ความสนใจ · 🎓 วัยเรียน · 💼 วัยทำงาน แล้วเรียงลำดับให้เลือก
+              </li>
+              <li data-th="&lt;strong class=&quot;text-white&quot;&gt;สร้างตอน&lt;/strong&gt; — เลือกชั้นคลิป Short / Reel / Mid / Long (15–150 ช็อต · 9:16 หรือ 16:9) ระบบสร้างโน้ตตอน ตั้ง band เสียง + aspect ให้อัตโนมัติ" data-en="&lt;strong class=&quot;text-white&quot;&gt;Create episode&lt;/strong&gt; — pick tier Short / Reel / Mid / Long (15–150 shots · 9:16 or 16:9); auto-generates the episode note with voice band + aspect">
+                <strong class="text-white">สร้างตอน</strong> — เลือกชั้นคลิป Short / Reel / Mid / Long (15–150 ช็อต · 9:16 หรือ 16:9) ระบบสร้างโน้ตตอน ตั้ง band เสียง + aspect ให้อัตโนมัติ
+              </li>
+              <li data-th="&lt;strong class=&quot;text-white&quot;&gt;บท + พรอม + อนุมัติ&lt;/strong&gt; — แยกโมเดลตามงาน (บทไทย qwen3.7-plus · พรอมร่าง deepseek · พรอมจริง claude-haiku-5-5) ผ่าน G1 ข้อเท็จจริง ≥2 แหล่ง และ G2 visual block — มีคนอนุมัติก่อนรันเสมอ" data-en="&lt;strong class=&quot;text-white&quot;&gt;Script + prompts + approval&lt;/strong&gt; — per-task model routing (Thai script qwen3.7-plus · draft deepseek · final claude-haiku-5-5); passes G1 (facts ≥2 sources) and G2 (visual block) — human approval required before any render">
+                <strong class="text-white">บท + พรอม + อนุมัติ</strong> — แยกโมเดลตามงาน (บทไทย qwen3.7-plus · พรอมร่าง deepseek · พรอมจริง claude-haiku-5-5) ผ่าน G1 ข้อเท็จจริง ≥2 แหล่ง และ G2 visual block — มีคนอนุมัติก่อนรันเสมอ
+              </li>
+              <li data-th="&lt;strong class=&quot;text-white&quot;&gt;รันอัตโนมัติตามลำดับ&lt;/strong&gt; — check &rarr; เสียง &rarr; ภาพ &rarr; วิดีโอ &rarr; QC &rarr; XML ยิงต่อเนื่องเอง ขั้นไหนพังหยุดตรงนั้น งานรันเป็น process แยก &rarr; ปิดหน้าต่าง/ปิด Obsidian ได้ ทำต่อจากที่ค้างได้ทันที" data-en="&lt;strong class=&quot;text-white&quot;&gt;Auto-chain run&lt;/strong&gt; — check &rarr; voice &rarr; image &rarr; video &rarr; QC &rarr; XML runs continuously, stops at any failed step; jobs run as separate processes &rarr; close the window/Obsidian and resume where it left off">
+                <strong class="text-white">รันอัตโนมัติตามลำดับ</strong> — check → เสียง → ภาพ → วิดีโอ → QC → XML ยิงต่อเนื่องเอง ขั้นไหนพังหยุดตรงนั้น งานรันเป็น process แยก → ปิดหน้าต่าง/ปิด Obsidian ได้ ทำต่อจากที่ค้างได้ทันที
+              </li>
+              <li data-th="&lt;strong class=&quot;text-white&quot;&gt;QC &rarr; แก้ &rarr; รายงาน&lt;/strong&gt; — contact sheet + ตรวจ band ระยะเสียง + จับภาพ/เสียงคลาด &gt; 0.15 วิ &rarr; verdict PASS/WARN/FAIL &rarr; คำสั่งแก้เฉพาะช็อตที่พลาด &rarr; รายงาน .md/.json + ส่งออก Timeline XML เข้า Premiere" data-en="&lt;strong class=&quot;text-white&quot;&gt;QC &rarr; fix &rarr; report&lt;/strong&gt; — contact sheet + voice duration band + A/V sync check &gt; 0.15s &rarr; verdict PASS/WARN/FAIL &rarr; per-shot fix commands &rarr; .md/.json report + Premiere Timeline XML export">
+                <strong class="text-white">QC → แก้ → รายงาน</strong> — contact sheet + ตรวจ band ระยะเสียง + จับภาพ/เสียงคลาด > 0.15 วิ → verdict PASS/WARN/FAIL → คำสั่งแก้เฉพาะช็อตที่พลาด → รายงาน .md/.json + ส่งออก Timeline XML เข้า Premiere
+              </li>
+            </ol>
+
             <div class="bg-black/40 rounded-xl p-4 font-mono text-xs border border-white/5 space-y-2">
-              <div class="text-slate-500">// Clip Studio Production Flow</div>
-              <div class="text-green-300"><span class="text-purple-400">Plan:</span> Episode manifest &rarr; shot list &rarr; prompt_check (gate G1)</div>
-              <div class="text-green-300"><span class="text-purple-400">Run:</span> clip_studio.ps1 -Task full &rarr; image / voice / video batch</div>
-              <div class="text-green-300"><span class="text-purple-400">QC:</span> qc_report.py &rarr; duration band check &rarr; contact sheet</div>
-              <div class="text-green-300"><span class="text-purple-400">Report:</span> QC_REPORT_*.md &rarr; fix list &rarr; rerun only failed shots</div>
+              <div class="text-slate-500">// Clip Studio Production Flow (Obsidian plugin)</div>
+              <div class="text-green-300"><span class="text-purple-400">Ideate:</span> 3 ideas/model (qwen3.7-plus) &rarr; score &#11088;&#127891;&#128188; &rarr; pick</div>
+              <div class="text-green-300"><span class="text-purple-400">Create:</span> tier Short/Reel/Mid/Long &rarr; episode note + band + aspect</div>
+              <div class="text-green-300"><span class="text-purple-400">Gate:</span> G1 facts &#8805;2 sources &middot; G2 visual &rarr; human approve (no bypass)</div>
+              <div class="text-green-300"><span class="text-purple-400">Run:</span> check &rarr; voice &rarr; image &rarr; video &rarr; QC &rarr; XML (auto-chain)</div>
+              <div class="text-green-300"><span class="text-purple-400">Output:</span> contact sheet &middot; QC_REPORT_*.md &middot; Premiere Timeline XML</div>
             </div>
             <div class="flex flex-wrap gap-2">
               <span class="px-2.5 py-1 bg-slate-800 text-green-300 text-[11px] font-mono rounded">Obsidian Plugin</span>
               <span class="px-2.5 py-1 bg-slate-800 text-cyan-300 text-[11px] font-mono rounded">Batch Pipeline</span>
               <span class="px-2.5 py-1 bg-slate-800 text-purple-300 text-[11px] font-mono rounded">QC Gate</span>
-              <span class="px-2.5 py-1 bg-slate-800 text-amber-300 text-[11px] font-mono rounded">Auto Report</span>
+              <span class="px-2.5 py-1 bg-slate-800 text-amber-300 text-[11px] font-mono rounded">Auto-chain</span>
+              <span class="px-2.5 py-1 bg-slate-800 text-rose-300 text-[11px] font-mono rounded">G1/G2 Human Gate</span>
+              <span class="px-2.5 py-1 bg-slate-800 text-sky-300 text-[11px] font-mono rounded">Premiere XML</span>
             </div>
           </div>
           <div class="lg:col-span-6">
